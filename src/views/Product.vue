@@ -1,6 +1,6 @@
 <template>
   <div class="grid grid-cols-4 gap-4">
-      <div v-for="product in getProduct" :key="product.id">        
+      <div v-for="product in getProduct" :key="product.id">     
   <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <a href="#">
           <img class="p-8 rounded-t-lg object-contain w-60 h-80 ml-10 " :src="product.image" alt="product image" />
@@ -52,5 +52,5 @@ export default {
   created() {
       this.fetchProduct();
   },
-}
+};
 </script>

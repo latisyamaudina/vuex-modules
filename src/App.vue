@@ -12,6 +12,18 @@
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
           </svg>
       </button>
+      <div v-if="isAuthenticated" class="flex md:order-2">
+                <button @click="logout" type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Logout
+                </button>
+            </div>
+            <div v-else class="flex md:order-2">
+                <router-link to="/login" type="button"
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Login
+                </router-link>
+            </div>
       <div class="hidden w-full md:block md:w-auto" id="navbar-default">
         <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
           <li>
@@ -24,17 +36,17 @@
             <router-link to="/news">Berita</router-link>
            </li>
            <li>
-              <router-link to="/product">Product</router-link>
+              <router-link to="/product">Produk</router-link>
              </li>
              <li>
-              <router-link to="/kategori">Category</router-link>
+              <router-link to="/kategori">kategori</router-link>
              </li>
        
         </ul>
       </div>
     </div>
   </nav>
-  
+
     <div id="nav">
      
   
@@ -42,3 +54,16 @@
     </div>
     <router-view/>
   </template>
+
+<script>
+import { mapActions, mapGetters } from 'vuex';
+
+export default {
+    computed: {
+        ...mapGetters('auth', ['isAuthenticated']),
+    },
+    methods: {
+        ...mapActions('auth', ['logout']),
+    },
+};
+</script>
